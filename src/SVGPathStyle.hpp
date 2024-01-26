@@ -24,11 +24,18 @@ std::string color_to_string(const ColorRGB& color);
 
 class SVGPathStyle {
 public:
-    SVGPathStyle(const ColorRGB& stroke_color, double stroke_width)
-    : m_stroke(stroke_color), m_stroke_width(stroke_width) {};
+    SVGPathStyle(
+        const ColorRGB& stroke_color, double stroke_width)
+    : m_stroke(stroke_color), m_stroke_width(stroke_width), m_stroke_dasharray({}) {};
+    SVGPathStyle(
+        const ColorRGB& stroke_color, double stroke_width,
+        const std::string& stroke_dasharray)
+    : m_stroke(stroke_color), m_stroke_width(stroke_width),
+      m_stroke_dasharray(stroke_dasharray) {};
 
     std::string to_string() const;
 private:
     ColorRGB m_stroke;
     double m_stroke_width;
+    std::string m_stroke_dasharray;
 };

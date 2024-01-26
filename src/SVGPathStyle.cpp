@@ -1,7 +1,6 @@
 #include "SVGPathStyle.hpp"
 
 #include <iomanip>
-#include <iostream>
 #include <sstream>
 
 std::string color_to_string(const ColorRGB& color) {
@@ -19,8 +18,10 @@ std::string SVGPathStyle::to_string() const {
     ss << "style=\""
        << "fill:none;"
        << "stroke:" << color_to_string(m_stroke) << ';'
-       << "stroke-width:" << m_stroke_width << "\"";
-
-    std::cout << color_to_string(m_stroke) << '\n';
+       << "stroke-width:" << m_stroke_width;
+    if (!m_stroke_dasharray.empty()) {
+        ss << ";stroke-dasharray:" << m_stroke_dasharray;
+    }
+    ss << "\"";
     return ss.str();
 }
