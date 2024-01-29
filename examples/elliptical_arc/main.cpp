@@ -1,5 +1,5 @@
 /**
- * @file main.hpp
+ * @file main.cpp
  * @author mfremer
  * @date 2024-01-29
  * 
