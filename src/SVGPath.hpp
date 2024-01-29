@@ -27,4 +27,4 @@ private:
     friend class SVGFile;
 };
 
-};
+}

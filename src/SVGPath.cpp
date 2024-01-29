@@ -23,4 +23,4 @@ SVGPath& operator<<(SVGPath& path, const SVGPathCommand& path_command) {
     return path;
 }
 
-};
+}

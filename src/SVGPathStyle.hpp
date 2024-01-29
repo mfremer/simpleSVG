@@ -46,4 +46,4 @@ private:
     friend class SVGPath;
 };
 
-};
+}

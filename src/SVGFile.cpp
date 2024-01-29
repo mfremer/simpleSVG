@@ -68,4 +68,4 @@ SVGFile& operator<<(SVGFile& file, const SVGPath& path) {
     return file;
 }
 
-};
+}

@@ -35,4 +35,4 @@ SVGPathCommand line_to(double x, double y, bool is_relative);
 // SVGPathCommand elliptical_arc_curve();
 SVGPathCommand close_path();
 
-};
+}

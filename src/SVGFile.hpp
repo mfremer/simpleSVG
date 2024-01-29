@@ -35,4 +35,4 @@ private:
     std::vector<SVGPath> m_paths;
 };
 
-};
+}
