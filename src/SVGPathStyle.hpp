@@ -1,5 +1,6 @@
 #pragma once
 
+#include <optional>
 #include <sstream>
 #include <string>
 #include <tuple>
@@ -21,19 +22,39 @@
 namespace simpleSVG {
 
 typedef std::tuple<uint8_t, uint8_t, uint8_t> ColorRGB;
+typedef std::optional<ColorRGB> MaybeColorRGB;
 
-std::string color_to_string(const ColorRGB& color);
+enum class SVGLineJoin {
+    ROUND, // default
+    BEVEL,
+    MITER
+};
+enum class SVGLineCap {
+    ROUND, // default
+    BUTT,
+    SQUARE
+};
+struct SVGStrokeStyle {
+    SVGLineCap line_cap;
+    SVGLineJoin line_join;
+    std::string dash_array;
+};
 
 class SVGPathStyle {
 public:
     SVGPathStyle(
         const ColorRGB& stroke_color, double stroke_width)
-    : m_stroke(stroke_color), m_stroke_width(stroke_width), m_stroke_dasharray({}) {};
-    SVGPathStyle(
-        const ColorRGB& stroke_color, double stroke_width,
-        const std::string& stroke_dasharray)
     : m_stroke(stroke_color), m_stroke_width(stroke_width),
-      m_stroke_dasharray(stroke_dasharray) {};
+      m_fill({}), m_stroke_style({}) {};
+    SVGPathStyle(
+        const ColorRGB& stroke_color, double stroke_width, const ColorRGB& fill_color)
+    : m_stroke(stroke_color), m_stroke_width(stroke_width), 
+      m_fill(fill_color), m_stroke_style({}) {};
+    SVGPathStyle(
+        const ColorRGB& stroke_color, double stroke_width, const MaybeColorRGB& fill_color,
+        const SVGStrokeStyle& stroke_style)
+    : m_stroke(stroke_color), m_stroke_width(stroke_width),
+      m_fill(fill_color), m_stroke_style(stroke_style) {};
 
 protected:
     std::string to_string() const;
@@ -41,7 +62,8 @@ protected:
 private:
     ColorRGB m_stroke;
     double m_stroke_width;
-    std::string m_stroke_dasharray;
+    MaybeColorRGB m_fill;
+    SVGStrokeStyle m_stroke_style;
 
     friend class SVGPath;
 };

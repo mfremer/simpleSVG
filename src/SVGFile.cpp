@@ -7,30 +7,28 @@
 
 namespace simpleSVG {
 
-namespace {
-    std::string unit_to_string(SVGUnit unit) {
-        switch (unit) {
-            case SVGUnit::CM:
-                return "cm";
-                break;
-            case SVGUnit::IN:
-                return "in";
-                break;
-            case SVGUnit::PT:
-                return "pt";
-                break;
-            case SVGUnit::PC:
-                return "pc";
-                break;
-            case SVGUnit::MM:
-                return "mm";
-                break;
-            case SVGUnit::PX:
-                return "px";
-                break;
-        }
-        return "";
+std::string unit_to_string(SVGUnit unit) {
+    switch (unit) {
+        case SVGUnit::CM:
+            return "cm";
+            break;
+        case SVGUnit::IN:
+            return "in";
+            break;
+        case SVGUnit::PT:
+            return "pt";
+            break;
+        case SVGUnit::PC:
+            return "pc";
+            break;
+        case SVGUnit::MM:
+            return "mm";
+            break;
+        case SVGUnit::PX:
+            return "px";
+            break;
     }
+    return "";
 }
 
 void SVGFile::add_path(const SVGPath& path) {

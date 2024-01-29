@@ -9,15 +9,14 @@ add_compile_options(-Wall -Wextra -pedantic)
 option(simpleSVG_compile_examples "Compile library examples" OFF)
 
 if (simpleSVG_compile_examples)
-    add_subdirectory(examples/basic)
-    add_subdirectory(examples/elliptical_arc)
+    add_subdirectory(examples)
 endif()
 
 add_library(simpleSVG
-    src/SVGFile.cpp
-    src/SVGPath.cpp
-    src/SVGPathCommand.cpp
-    src/SVGPathStyle.cpp
+    ${PROJECT_SOURCE_DIR}/src/SVGFile.cpp
+    ${PROJECT_SOURCE_DIR}/src/SVGPath.cpp
+    ${PROJECT_SOURCE_DIR}/src/SVGPathCommand.cpp
+    ${PROJECT_SOURCE_DIR}/src/SVGPathStyle.cpp
 )
 
 target_include_directories(simpleSVG PUBLIC
