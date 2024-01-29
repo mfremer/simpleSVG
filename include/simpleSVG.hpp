@@ -1,6 +1,6 @@
 #pragma once
 
-#include "simpleSVG/SVGFile.hpp"
-#include "simpleSVG/SVGPath.hpp"
-#include "simpleSVG/SVGPathCommand.hpp"
-#include "simpleSVG/SVGPathStyle.hpp"
+#include "../src/SVGFile.hpp"
+#include "../src/SVGPath.hpp"
+#include "../src/SVGPathCommand.hpp"
+#include "../src/SVGPathStyle.hpp"
