@@ -16,12 +16,10 @@ enum class SVGUnit {
     PX  // pixels
 };
 
-std::string unit_to_string(SVGUnit unit);
-
 class SVGFile {
 public:
-    SVGFile(double width, double height, SVGUnit unit)
-    : m_width(width), m_height(height), m_unit(unit) {};
+    SVGFile(double width, double height, SVGUnit unit, bool flip_y_axis)
+    : m_width(width), m_height(height), m_unit(unit), m_flip_y_axis(flip_y_axis) {};
 
     void write_file(const std::string& filename) const;
     friend SVGFile& operator<<(SVGFile& file, const SVGPath& path);
@@ -32,6 +30,7 @@ private:
     double m_width;
     double m_height;
     SVGUnit m_unit;
+    bool m_flip_y_axis;
     std::vector<SVGPath> m_paths;
 };
 

@@ -7,28 +7,30 @@
 
 namespace simpleSVG {
 
-std::string unit_to_string(SVGUnit unit) {
-    switch (unit) {
-        case SVGUnit::CM:
-            return "cm";
-            break;
-        case SVGUnit::IN:
-            return "in";
-            break;
-        case SVGUnit::PT:
-            return "pt";
-            break;
-        case SVGUnit::PC:
-            return "pc";
-            break;
-        case SVGUnit::MM:
-            return "mm";
-            break;
-        case SVGUnit::PX:
-            return "px";
-            break;
+namespace {
+    std::string unit_to_string(SVGUnit unit) {
+        switch (unit) {
+            case SVGUnit::CM:
+                return "cm";
+                break;
+            case SVGUnit::IN:
+                return "in";
+                break;
+            case SVGUnit::PT:
+                return "pt";
+                break;
+            case SVGUnit::PC:
+                return "pc";
+                break;
+            case SVGUnit::MM:
+                return "mm";
+                break;
+            case SVGUnit::PX:
+                return "px";
+                break;
+        }
+        return "";
     }
-    return "";
 }
 
 void SVGFile::add_path(const SVGPath& path) {
@@ -50,8 +52,10 @@ void SVGFile::write_file(const std::string& filename) const {
          << "viewBox=\"" << "0 0 " << m_width << " " << m_height << "\" "
          << "xmlns=\"http://www.w3.org/2000/svg\">\n";
 
-    // Flip y-axis
-    file << "<g transform=\"translate(0 " << m_height << ") scale(1 -1)\">\n";
+    // Flip y-axis if wanted
+    if (m_flip_y_axis) {
+        file << "<g transform=\"translate(0 " << m_height << ") scale(1 -1)\">\n";
+    }
 
     // Write paths
     for (const auto& path : m_paths) {
@@ -59,7 +63,10 @@ void SVGFile::write_file(const std::string& filename) const {
     }
 
     // End y-axis flip and file
-    file << "</g>\n</svg>";
+    if (m_flip_y_axis) {
+        file << "</g>\n";
+    }
+    file << "</svg>";
     file.close();
 }
 
