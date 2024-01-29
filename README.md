@@ -1,7 +1,15 @@
 # simpleSVG
-Simple library for writing simple SVGs exclusively made of paths with simple styles.
+Simple C++17 library for writing simple SVGs exclusively made of paths with simple styles.
 
 ## Using the library in a project
+To use the library in a project, simply add the simpleSVG subdirectory in your `CMakeLists.txt` using `add_subdirectory` and link against the library using `target_link_libraries`.
+```CMake
+...
+add_subdirectory(simpleSVG)
+add_executable(<project name> <project sources...>)
+target_link_libraries(<project name> PUBLIC simpleSVG)
+...
+```
 
 ## Basic use
 All code is under the `SimpleSVG` namespace. The four main objects are `SVGFile`, `SVGPath`, `SVGPathCommand` and `SVGPathStyle`.
