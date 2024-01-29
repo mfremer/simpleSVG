@@ -18,6 +18,9 @@ enum class SVGUnit {
 
 class SVGFile {
 public:
+    SVGFile(double width, double height, SVGUnit unit)
+    : m_width(width), m_height(height), m_unit(unit), m_flip_y_axis(false) {};
+
     SVGFile(double width, double height, SVGUnit unit, bool flip_y_axis)
     : m_width(width), m_height(height), m_unit(unit), m_flip_y_axis(flip_y_axis) {};
 

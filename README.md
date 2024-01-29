@@ -1,6 +1,8 @@
 # simpleSVG
 Simple library for writing simple SVGs exclusively made of paths with simple styles.
 
+## Using the library in a project
+
 ## Basic use
 All code is under the `SimpleSVG` namespace. The four main objects are `SVGFile`, `SVGPath`, `SVGPathCommand` and `SVGPathStyle`.
 
