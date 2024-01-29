@@ -5,6 +5,8 @@
 #include <string>
 #include <vector>
 
+namespace simpleSVG {
+
 enum class SVGUnit {
     CM, // centimeters
     IN, // inches
@@ -31,4 +33,6 @@ private:
     double m_height;
     SVGUnit m_unit;
     std::vector<SVGPath> m_paths;
+};
+
 };

@@ -18,6 +18,8 @@
  - stroke-dasharray
 */
 
+namespace simpleSVG {
+
 typedef std::tuple<uint8_t, uint8_t, uint8_t> ColorRGB;
 
 std::string color_to_string(const ColorRGB& color);
@@ -42,4 +44,6 @@ private:
     std::string m_stroke_dasharray;
 
     friend class SVGPath;
+};
+
 };

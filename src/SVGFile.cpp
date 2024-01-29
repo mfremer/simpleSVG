@@ -5,6 +5,8 @@
 
 #include <cstdlib>
 
+namespace simpleSVG {
+
 std::string unit_to_string(SVGUnit unit) {
     switch (unit) {
         case SVGUnit::CM:
@@ -65,3 +67,5 @@ SVGFile& operator<<(SVGFile& file, const SVGPath& path) {
     file.add_path(path);
     return file;
 }
+
+};

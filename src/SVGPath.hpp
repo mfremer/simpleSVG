@@ -6,6 +6,8 @@
 #include <string>
 #include <vector>
 
+namespace simpleSVG {
+
 class SVGPath {
 public:
     SVGPath(const SVGPathStyle& path_style)
@@ -23,4 +25,6 @@ private:
     SVGPathStyle m_style;
 
     friend class SVGFile;
+};
+
 };

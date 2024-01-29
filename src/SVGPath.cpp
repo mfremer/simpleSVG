@@ -2,6 +2,8 @@
 
 #include <sstream>
 
+namespace simpleSVG {
+
 void SVGPath::add_command(const SVGPathCommand& path_command) {
     m_commands.push_back(path_command);
 }
@@ -20,3 +22,5 @@ SVGPath& operator<<(SVGPath& path, const SVGPathCommand& path_command) {
     path.add_command(path_command);
     return path;
 }
+
+};

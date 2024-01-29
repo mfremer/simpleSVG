@@ -3,6 +3,8 @@
 #include <iomanip>
 #include <sstream>
 
+using namespace simpleSVG;
+
 std::string color_to_string(const ColorRGB& color) {
     auto [r, g, b] = color;
     std::stringstream ss;

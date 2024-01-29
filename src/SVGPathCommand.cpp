@@ -2,6 +2,8 @@
 
 #include <sstream>
 
+using namespace simpleSVG;
+
 size_t SVGPathCommand::num_args() const {
     switch (m_cmd_code) {
         case 'M':
@@ -12,7 +14,7 @@ size_t SVGPathCommand::num_args() const {
             return 0;
             break;
     }
-    return PATH_CMD_MAX_ARGS;
+    return path_cmd_max_args;
 }
 
 std::string SVGPathCommand::to_string() const {
