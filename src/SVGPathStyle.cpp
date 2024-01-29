@@ -3,7 +3,7 @@
 #include <iomanip>
 #include <sstream>
 
-using namespace simpleSVG;
+namespace simpleSVG {
 
 std::string color_to_string(const ColorRGB& color) {
     auto [r, g, b] = color;
@@ -26,4 +26,6 @@ std::string SVGPathStyle::to_string() const {
     }
     ss << "\"";
     return ss.str();
+}
+
 }

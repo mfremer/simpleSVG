@@ -2,7 +2,7 @@
 
 #include <sstream>
 
-using namespace simpleSVG;
+namespace simpleSVG {
 
 size_t SVGPathCommand::num_args() const {
     switch (m_cmd_code) {
@@ -36,4 +36,6 @@ SVGPathCommand line_to(double x, double y, bool is_relative) {
 
 SVGPathCommand close_path() {
     return SVGPathCommand('Z', false, {});
+}
+
 }
