@@ -12,13 +12,16 @@ public:
         const std::array<double, PATH_CMD_MAX_ARGS>& args)
     : m_cmd_code(cmd_code), m_is_relative(is_relative), m_args(args) {};
 
+protected:
     std::string to_string() const;
+
 private:
     char m_cmd_code;
     bool m_is_relative;
-
     size_t num_args() const;
     std::array<double, PATH_CMD_MAX_ARGS> m_args;
+
+    friend class SVGPath;
 };
 
 SVGPathCommand move_to(double x, double y, bool is_relative);

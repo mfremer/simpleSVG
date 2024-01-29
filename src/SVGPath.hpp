@@ -11,9 +11,16 @@ public:
     SVGPath(const SVGPathStyle& path_style)
     : m_commands({}), m_style(path_style) {};
 
-    void add_command(const SVGPathCommand& path_command);
+    friend SVGPath& operator<<(SVGPath& path, const SVGPathCommand& path_command);
+
+protected:
     std::string to_string() const;
+
 private:
+    void add_command(const SVGPathCommand& path_command);
+
     std::vector<SVGPathCommand> m_commands;
     SVGPathStyle m_style;
+
+    friend class SVGFile;
 };

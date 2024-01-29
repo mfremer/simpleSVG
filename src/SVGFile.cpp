@@ -60,3 +60,8 @@ void SVGFile::write_file(const std::string& filename) const {
     file << "</g>\n</svg>";
     file.close();
 }
+
+SVGFile& operator<<(SVGFile& file, const SVGPath& path) {
+    file.add_path(path);
+    return file;
+}

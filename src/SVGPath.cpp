@@ -15,3 +15,8 @@ std::string SVGPath::to_string() const {
     ss << "\"/>";
     return ss.str();
 }
+
+SVGPath& operator<<(SVGPath& path, const SVGPathCommand& path_command) {
+    path.add_command(path_command);
+    return path;
+}

@@ -33,9 +33,13 @@ public:
     : m_stroke(stroke_color), m_stroke_width(stroke_width),
       m_stroke_dasharray(stroke_dasharray) {};
 
+protected:
     std::string to_string() const;
+
 private:
     ColorRGB m_stroke;
     double m_stroke_width;
     std::string m_stroke_dasharray;
+
+    friend class SVGPath;
 };
