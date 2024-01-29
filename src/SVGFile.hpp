@@ -1,3 +1,12 @@
+/**
+ * @file SVGFile.hpp
+ * @author mfremer
+ * @date 2024-01-26
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #pragma once
 
 #include "SVGPath.hpp"

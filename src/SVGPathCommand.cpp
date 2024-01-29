@@ -1,3 +1,12 @@
+/**
+ * @file SVGPathCommand.cpp
+ * @author mfremer
+ * @date 2024-01-26
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include "SVGPathCommand.hpp"
 
 #include <iostream>

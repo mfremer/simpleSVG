@@ -46,8 +46,4 @@ int main() {
 ```
 
 ## Notes
-- SVGs have their origin at the top-left, with x increasing from left to right and y increasing from top to bottom. This means that for the (x, y, z) basis to be right-handed, z points towards the screen.
-
-## Useful links
-- [SVG path element](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/path)
-- [SVG path "d" attribute](https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/d#path_commands)
+- SVGs have their origin at the top-left, with x increasing from left to right and y increasing from top to bottom. This means that for the (x, y, z) basis to be right-handed, z points towards the screen. If you are doing fabrication (plotting or cutting), you might want to flip the y-axis to have the origin at the bottom-left by using the `SVGFile` constructor.
