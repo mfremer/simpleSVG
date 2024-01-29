@@ -14,7 +14,7 @@ target_link_libraries(<project name> PUBLIC simpleSVG)
 ## Basic use
 All code is under the `SimpleSVG` namespace. The four main objects are `SVGFile`, `SVGPath`, `SVGPathCommand` and `SVGPathStyle`.
 
-An `SVGFile` is made of multiple `SVGPath`s, each having an `SVGPathSytle` determining their appearance. Paths consist of multiple `SVGPathCommands`, which are the basic building blocks. `SVGPathCommands` are created with functions such as `move_to`, `line_to` or `elliptic_arc_to` that determine the geometry of the path.
+An `SVGFile` is made of multiple `SVGPath`s, each having an `SVGPathSytle` determining their appearance. Paths consist of multiple `SVGPathCommands` that determine the geometry of the path, created with functions such as `move_to`, `line_to` or `elliptic_arc_to`.
 
 Path commands are added to a path using `operator<<`. Paths are added to a file in the same fashion.
 
