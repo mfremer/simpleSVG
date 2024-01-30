@@ -43,6 +43,11 @@ int main() {
     // writes the file to disk
     file.write_file("./basic.svg");
 }
+
+## TODOs
+- [ ] Add option to change fill-rule and explanation for paths with holes.
+- [ ] Add support for groups and (inkscape) layers.
+- [ ] Add support for transforms.
 ```
 
 ## Notes
