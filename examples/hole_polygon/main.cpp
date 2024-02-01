@@ -15,7 +15,10 @@ using namespace simpleSVG;
 
 int main() {
     SVGFile file(200, 200, SVGUnit::MM);
-    SVGPathStyle black_red({0, 0, 0}, 0.5, {255, 0, 0});
+    SVGPathStyle black_red(
+        ColorRGB{0, 0, 0}, 0.5,                    // stroke style
+        ColorRGB{255, 0, 0}, SVGFillRule::EVEN_ODD // fill style
+    );
     SVGPath poly_hole(black_red);
 
     // exterior polygon, clockwise 
