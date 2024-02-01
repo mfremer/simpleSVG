@@ -47,3 +47,9 @@ int main() {
 
 ## Notes
 - SVGs have their origin at the top-left, with x increasing from left to right and y increasing from top to bottom. This means that for the (x, y, z) basis to be right-handed, z points towards the screen. If you are doing fabrication (plotting or cutting), you might want to flip the y-axis to have the origin at the bottom-left by using the `SVGFile` constructor.
+- To create holes in a closed filled path, you need to have two closed paths winding in different directions (clockwise/counterclockwise) within the same `SVGPath`. You might want to change the path's `fill-rule` option if the obtained result is not the desired one.
+
+## TODOs
+- [ ] Add option to change fill-rule and explanation for paths with holes.
+- [ ] Add support for groups and (inkscape) layers.
+- [ ] Add support for transforms.
