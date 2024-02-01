@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.10)
 
-project(elliptical_arc)
+project(examples)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
@@ -11,3 +11,6 @@ target_link_libraries(basic PUBLIC simpleSVG)
 
 add_executable(elliptical_arc elliptical_arc/main.cpp)
 target_link_libraries(elliptical_arc PUBLIC simpleSVG)
+
+add_executable(hole_polygon hole_polygon/main.cpp)
+target_link_libraries(hole_polygon PUBLIC simpleSVG)
