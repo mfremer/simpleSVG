@@ -26,9 +26,9 @@ using namespace simpleSVG;
 
 int main() {
     // initializes the file, a path style and a path
-    SVGFile file(500, 500, SVGUnit::MM);  // 500x500mm canvas
-    SVGPathStyle style({255, 0, 0}, 0.5); // color, thickness
-    SVGPath path(style);
+    SVGFile      file(500, 500, SVGUnit::MM); // 500x500mm canvas
+    SVGPathStyle style({255, 0, 0}, 0.5);     // color, thickness
+    SVGPath      path(style);
 
     // creates a path representing a 300x300 square
     path << move_to(100, 100, false)
@@ -50,6 +50,5 @@ int main() {
 - To create holes in a closed filled path, you need to have two closed paths winding in different directions (clockwise/counterclockwise) within the same `SVGPath`. You might want to change the path's `fill-rule` option if the obtained result is not the desired one.
 
 ## TODOs
-- [ ] Add option to change fill-rule and explanation for paths with holes.
 - [ ] Add support for groups and (inkscape) layers.
 - [ ] Add support for transforms.
