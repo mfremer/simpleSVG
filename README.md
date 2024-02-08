@@ -50,6 +50,7 @@ int main() {
 - To create holes in a closed filled path, you need to have two closed paths winding in different directions (clockwise/counterclockwise) within the same `SVGPath`. You might want to change the path's `fill-rule` option if the obtained result is not the desired one.
 
 ## TODOs
+- [ ] Check path drawing order.
 - [ ] Add support for groups and (inkscape) layers.
 - [ ] Add support for transforms.
 - [ ] Add support for markers (arrowheads...).
