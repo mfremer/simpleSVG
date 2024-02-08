@@ -52,3 +52,4 @@ int main() {
 ## TODOs
 - [ ] Add support for groups and (inkscape) layers.
 - [ ] Add support for transforms.
+- [ ] Add support for markers (arrowheads...).
