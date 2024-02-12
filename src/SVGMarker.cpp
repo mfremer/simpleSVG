@@ -1,3 +1,12 @@
+/**
+ * @file SVGMarker.cpp
+ * @author mfremer
+ * @date 2024-02-12
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include "SVGMarker.hpp"
 
 #include <sstream>
