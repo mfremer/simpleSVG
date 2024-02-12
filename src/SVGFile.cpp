@@ -48,6 +48,18 @@ void SVGFile::add_marker(const SVGMarker& marker) {
     m_markers.push_back(marker);
 }
 
+void SVGFile::begin_group(const std::string& name) {
+    m_group_name = name;
+    m_group_start_id = m_paths.size();
+    m_active_group = true;
+}
+void SVGFile::end_group() {
+    if (m_active_group) {
+        m_groups.push_back({m_group_name, m_group_start_id, m_paths.size()});
+    }
+    m_active_group = false;
+}
+
 void SVGFile::write_file(const std::string& filename) const {
     std::ofstream file(filename);
     if (!file.is_open()) {
@@ -76,9 +88,21 @@ void SVGFile::write_file(const std::string& filename) const {
     file << "</defs>\n";
 
     // Write paths
-    for (const auto& path : m_paths) {
-        file << path.to_string() << '\n';
+    if (m_groups.empty()) {
+        for (const auto& path : m_paths) {
+            file << path.to_string() << '\n';
+        }
+    } else {
+        for (const auto& [name, start, end] : m_groups) {
+            file << "<g id=\"" << name << "\">";
+            for (size_t i = start; i < end; ++i) {
+                file << m_paths[i].to_string() << '\n';
+            }
+            file << "</g>\n";
+        }
     }
+
+
 
     // End y-axis flip and file
     if (m_flip_y_axis) {

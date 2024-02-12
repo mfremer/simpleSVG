@@ -13,6 +13,7 @@
 #include "SVGMarker.hpp"
 
 #include <string>
+#include <tuple>
 #include <vector>
 
 namespace simpleSVG {
@@ -38,6 +39,8 @@ public:
     friend SVGFile& operator<<(SVGFile& file, const SVGPath& path);
 
     void add_marker(const SVGMarker& marker);
+    void begin_group(const std::string& name);
+    void end_group();
 private:
     void add_path(const SVGPath& path);
 
@@ -47,6 +50,12 @@ private:
     bool m_flip_y_axis;
     std::vector<SVGPath> m_paths;
     std::vector<SVGMarker> m_markers;
+
+    // group variables
+    bool m_active_group = false;
+    std::string m_group_name;
+    size_t m_group_start_id;
+    std::vector<std::tuple<std::string, size_t, size_t>> m_groups;
 };
 
 }

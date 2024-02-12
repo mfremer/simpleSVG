@@ -17,3 +17,6 @@ target_link_libraries(holed_polygon PUBLIC simpleSVG)
 
 add_executable(markers markers/main.cpp)
 target_link_libraries(markers PUBLIC simpleSVG)
+
+add_executable(groups groups/main.cpp)
+target_link_libraries(groups PUBLIC simpleSVG)

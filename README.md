@@ -50,6 +50,7 @@ int main() {
 - [holed_polygon](/examples/holed_polygon/main.cpp): showcases how to create a closed filled polygon with a hole using a single path.
 - [elliptical_arc](/examples/elliptical_arc/main.cpp): shows the effects of the boolean flags in the `elliptical_arc` path command that help select which elliptical arc to draw between two given points.
 - [markers](/examples/markers/main.cpp): shows how to define markers (arrowhead, triangle), include them in a file and apply them to a path.
+- [groups](/examples/groups/main.cpp): shows how to separate paths in the `elliptical_arc` example into two separate groups.
 
 ## Notes
 - SVGs have their origin at the top-left, with x increasing from left to right and y increasing from top to bottom. This means that for the (x, y, z) basis to be right-handed, z points towards the screen. If you are doing fabrication (plotting or cutting), you might want to flip the y-axis to have the origin at the bottom-left by using the `SVGFile` constructor.
@@ -57,7 +58,5 @@ int main() {
 
 ## TODOs
 - [ ] Check path drawing order.
-- [ ] Add support for groups.
 - [ ] Add support for inkscape layers.
 - [ ] Add support for transforms.
-- [ ] Improve support for markers.
