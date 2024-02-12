@@ -12,5 +12,8 @@ target_link_libraries(basic PUBLIC simpleSVG)
 add_executable(elliptical_arc elliptical_arc/main.cpp)
 target_link_libraries(elliptical_arc PUBLIC simpleSVG)
 
-add_executable(hole_polygon hole_polygon/main.cpp)
-target_link_libraries(hole_polygon PUBLIC simpleSVG)
+add_executable(holed_polygon holed_polygon/main.cpp)
+target_link_libraries(holed_polygon PUBLIC simpleSVG)
+
+add_executable(markers markers/main.cpp)
+target_link_libraries(markers PUBLIC simpleSVG)

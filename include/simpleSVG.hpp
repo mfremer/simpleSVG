@@ -13,3 +13,4 @@
 #include "../src/SVGPath.hpp"
 #include "../src/SVGPathCommand.hpp"
 #include "../src/SVGPathStyle.hpp"
+#include "../src/SVGMarker.hpp"

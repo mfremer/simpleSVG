@@ -17,6 +17,7 @@ add_library(simpleSVG
     ${PROJECT_SOURCE_DIR}/src/SVGPath.cpp
     ${PROJECT_SOURCE_DIR}/src/SVGPathCommand.cpp
     ${PROJECT_SOURCE_DIR}/src/SVGPathStyle.cpp
+    ${PROJECT_SOURCE_DIR}/src/SVGMarker.cpp
 )
 
 target_include_directories(simpleSVG PUBLIC

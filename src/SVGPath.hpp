@@ -34,6 +34,7 @@ private:
     SVGPathStyle m_style;
 
     friend class SVGFile;
+    friend class SVGMarker;
 };
 
 }

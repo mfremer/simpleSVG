@@ -54,9 +54,13 @@ std::string linejoin_to_string(const SVGLineJoin& linejoin) {
     }
     return "none";
 }
-std::string dasharray_to_string(const std::string& dash_array) {
-    if (dash_array.empty()) { return "none"; }
-    return dash_array;
+std::string dasharray_to_string(const std::string& dasharray) {
+    if (dasharray.empty()) { return "none"; }
+    return dasharray;
+}
+std::string marker_id_to_string(const std::string& marker_id) {
+    if (marker_id.empty()) { return "none"; }
+    return "url(#" + marker_id + ")";
 }
 std::string fillrule_to_string(const SVGFillRule& fillrule) {
     switch (fillrule) {
@@ -70,6 +74,13 @@ std::string fillrule_to_string(const SVGFillRule& fillrule) {
     return "none";
 }
 
+void SVGPathStyle::add_marker_start(const std::string& marker_id) {
+    m_marker_start_id = marker_id;
+}
+void SVGPathStyle::add_marker_end(const std::string& marker_id) {
+    m_marker_end_id = marker_id;
+}
+
 std::string SVGPathStyle::to_string() const {    
     std::stringstream ss;
     ss << "style=\""
@@ -79,7 +90,9 @@ std::string SVGPathStyle::to_string() const {
        << "stroke-linejoin:" << linejoin_to_string(m_stroke_linejoin) << ";"
        << "stroke-dasharray:" << dasharray_to_string(m_stroke_dasharray) << ";"
        << "fill:" << maybecolor_to_string(m_fill_color) << ";"
-       << "fill-rule" << fillrule_to_string(m_fill_rule)
+       << "fill-rule:" << fillrule_to_string(m_fill_rule) << ";"
+       << "marker-start:" << marker_id_to_string(m_marker_start_id) << ";"
+       << "marker-end:" << marker_id_to_string(m_marker_end_id)
        << "\"";
     return ss.str();
 }

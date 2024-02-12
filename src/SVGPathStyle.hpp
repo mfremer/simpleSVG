@@ -65,37 +65,42 @@ public:
         const MaybeColorRGB& stroke_color, double stroke_width,
         const SVGLineCap& stroke_linecap, const SVGLineJoin& stroke_linejoin,
         const std::string& stroke_dasharray,
-        const MaybeColorRGB& fill_color, const SVGFillRule& fill_rule
+        const MaybeColorRGB& fill_color, const SVGFillRule& fill_rule,
+        const std::string& marker_start_id, const std::string& marker_end_id
     ) : m_stroke_color{stroke_color}, m_stroke_width{stroke_width},
         m_stroke_linecap{stroke_linecap}, m_stroke_linejoin{stroke_linejoin},
         m_stroke_dasharray{stroke_dasharray},
-        m_fill_color{fill_color}, m_fill_rule{fill_rule} {}
+        m_fill_color{fill_color}, m_fill_rule{fill_rule},
+        m_marker_start_id(marker_start_id), m_marker_end_id(marker_end_id) {}
     
     SVGPathStyle(
         const ColorRGB& stroke_color, double stroke_width
     ) : SVGPathStyle(stroke_color, stroke_width,
                      linecap_default, linejoin_default,
-                     {}, {}, fillrule_default) {}
+                     {}, {}, fillrule_default, {}, {}) {}
     
     SVGPathStyle(
         const ColorRGB& stroke_color, double stroke_width,
         const SVGLineCap& stroke_linecap, const SVGLineJoin& stroke_linejoin
     ) : SVGPathStyle(stroke_color, stroke_width,
                      stroke_linecap, stroke_linejoin,
-                     {}, {}, fillrule_default) {}
+                     {}, {}, fillrule_default, {}, {}) {}
     
     SVGPathStyle(
         const ColorRGB& fill_color, const SVGFillRule& fill_rule
     ) : SVGPathStyle({}, 0.,
                      linecap_default, linejoin_default,
-                     {}, fill_color, fill_rule) {}
+                     {}, fill_color, fill_rule, {}, {}) {}
 
     SVGPathStyle(
         const MaybeColorRGB& stroke_color, double stroke_width,
         const MaybeColorRGB& fill_color, const SVGFillRule& fill_rule
     ) : SVGPathStyle(stroke_color, stroke_width,
                      linecap_default, linejoin_default,
-                     {}, fill_color, fill_rule) {}
+                     {}, fill_color, fill_rule, {}, {}) {}
+
+    void add_marker_start(const std::string& marker_id);
+    void add_marker_end(const std::string& marker_id);
 
 protected:
     std::string to_string() const;
@@ -108,6 +113,8 @@ private:
     std::string m_stroke_dasharray;
     MaybeColorRGB m_fill_color;
     SVGFillRule m_fill_rule;
+    std::string m_marker_start_id;
+    std::string m_marker_end_id;
 
     friend class SVGPath;
 };

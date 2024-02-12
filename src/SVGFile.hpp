@@ -10,6 +10,7 @@
 #pragma once
 
 #include "SVGPath.hpp"
+#include "SVGMarker.hpp"
 
 #include <string>
 #include <vector>
@@ -36,6 +37,7 @@ public:
     void write_file(const std::string& filename) const;
     friend SVGFile& operator<<(SVGFile& file, const SVGPath& path);
 
+    void add_marker(const SVGMarker& marker);
 private:
     void add_path(const SVGPath& path);
 
@@ -44,6 +46,7 @@ private:
     SVGUnit m_unit;
     bool m_flip_y_axis;
     std::vector<SVGPath> m_paths;
+    std::vector<SVGMarker> m_markers;
 };
 
 }

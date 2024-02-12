@@ -44,6 +44,10 @@ void SVGFile::add_path(const SVGPath& path) {
     m_paths.push_back(path);
 }
 
+void SVGFile::add_marker(const SVGMarker& marker) {
+    m_markers.push_back(marker);
+}
+
 void SVGFile::write_file(const std::string& filename) const {
     std::ofstream file(filename);
     if (!file.is_open()) {
@@ -63,6 +67,13 @@ void SVGFile::write_file(const std::string& filename) const {
     if (m_flip_y_axis) {
         file << "<g transform=\"translate(0 " << m_height << ") scale(1 -1)\">\n";
     }
+
+    // Write markers
+    file << "<defs>\n";
+    for (const auto& marker : m_markers) {
+        file << marker.to_string() << '\n';
+    }
+    file << "</defs>\n";
 
     // Write paths
     for (const auto& path : m_paths) {
