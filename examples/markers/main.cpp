@@ -38,7 +38,7 @@ int main() {
 
     // create path and add markers
     SVGPathStyle path_style({255, 0, 0}, 0.5);
-    path_style.add_marker_start("");
+    path_style.add_marker_start("arrow");
     path_style.add_marker_end("triangle");
     SVGPath path(path_style);
     path << move_to(100, 100, false)
