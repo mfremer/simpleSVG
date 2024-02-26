@@ -60,3 +60,4 @@ int main() {
 - [ ] Check path drawing order.
 - [ ] Add support for inkscape layers.
 - [ ] Add support for transforms.
+- [ ] Allow providing a `vector<SVGPathCommand>` to `SVGPath::operator<<`.
