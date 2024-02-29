@@ -37,6 +37,7 @@ public:
 
     void write_file(const std::string& filename) const;
     friend SVGFile& operator<<(SVGFile& file, const SVGPath& path);
+    friend SVGFile& operator<<(SVGFile& file, const std::vector<SVGPath>& paths);
 
     void add_marker(const SVGMarker& marker);
     void begin_group(const std::string& name);

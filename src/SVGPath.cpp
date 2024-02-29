@@ -32,4 +32,9 @@ SVGPath& operator<<(SVGPath& path, const SVGPathCommand& path_command) {
     return path;
 }
 
+SVGPath& operator<<(SVGPath& path, const std::vector<SVGPathCommand>& path_commands) {
+    for (const auto& pc : path_commands) { path.add_command(pc); }
+    return path;
+}
+
 }

@@ -117,4 +117,9 @@ SVGFile& operator<<(SVGFile& file, const SVGPath& path) {
     return file;
 }
 
+SVGFile& operator<<(SVGFile& file, const std::vector<SVGPath>& paths) {
+    for (const auto& p : paths) { file.add_path(p); }
+    return file;
+}
+
 }

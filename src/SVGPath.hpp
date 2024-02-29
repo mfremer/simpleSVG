@@ -23,6 +23,7 @@ public:
     : m_commands({}), m_style(path_style) {};
 
     friend SVGPath& operator<<(SVGPath& path, const SVGPathCommand& path_command);
+    friend SVGPath& operator<<(SVGPath& path, const std::vector<SVGPathCommand>& path_commands);
 
 protected:
     std::string to_string() const;
