@@ -43,13 +43,16 @@ std::vector<std::pair<double, double>> polygon(
     return vs;
 }
 
-void add_node(SVGPath& path, double x, double y, double r, size_t n) {
+std::vector<SVGPathCommand> create_node(double x, double y, double r, size_t n) {
+    std::vector<SVGPathCommand> node_cmds;
     auto node = polygon(x, y, r, n);
     bool first = true;
     for (const auto& [x, y] : node) {
-        path << (first ? move_to(x, y, false) : line_to(x, y, false));
+        auto cmd = (first ? move_to(x, y, false) : line_to(x, y, false));
+        node_cmds.push_back(cmd);
         first = false;
     }
+    return node_cmds;
 }
 
 int main() {
@@ -72,7 +75,7 @@ int main() {
     }
     SVGPath nodes_k33(node_style);
     for (const auto& [x, y] : node_pos_k33) {
-        add_node(nodes_k33, x, y, NODE_RADIUS, NODE_POINTS);
+        nodes_k33 << create_node(x, y, NODE_RADIUS, NODE_POINTS);
     }
     SVGPath arcs_k33(arc_style);
     for (size_t left = 0; left < 3; ++left) {
@@ -99,7 +102,7 @@ int main() {
     
     SVGPath nodes_k5(node_style);
     for (const auto& [x, y] : node_pos_k5) {
-        add_node(nodes_k5, x, y, NODE_RADIUS, NODE_POINTS);
+        nodes_k5 << create_node(x, y, NODE_RADIUS, NODE_POINTS);
     }
     SVGPath arcs_k5(arc_style);
     for (size_t i = 0; i < 5; ++i) {
