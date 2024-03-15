@@ -1,3 +1,12 @@
+/**
+ * @file main.cpp
+ * @author mfremer
+ * @date 2024-02-13
+ * 
+ * @copyright Copyright (c) 2024
+ * 
+ */
+
 #include <simpleSVG.hpp>
 
 #include <algorithm>
