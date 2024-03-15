@@ -2,7 +2,7 @@
 Simple C++17 library for writing simple SVGs exclusively made of paths with simple styles.
 
 ## Building and running the examples
-Make sure that the ```simpleSVG_compile_examples``` flag is turned on in the [CMakeLists.txt](/CMakeLists.txt) file is enabled (should be by default). The resulting SVG files produced by the example executables are written to the ```build/``` directory.
+Make sure that the ```simpleSVG_compile_examples``` flag in the [CMakeLists.txt](/CMakeLists.txt) file is enabled (should be by default). The resulting SVG files produced by the example executables are written to the ```build/``` directory.
 ```console
 mkdir build
 cd build
