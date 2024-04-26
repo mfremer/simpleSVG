@@ -23,3 +23,6 @@ target_link_libraries(groups PUBLIC simpleSVG)
 
 add_executable(forbidden_minors forbidden_minors/main.cpp)
 target_link_libraries(forbidden_minors PUBLIC simpleSVG)
+
+add_executable(penrose_tiles penrose_tiles/main.cpp)
+target_link_libraries(penrose_tiles PUBLIC simpleSVG)
