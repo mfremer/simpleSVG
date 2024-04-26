@@ -36,7 +36,7 @@ int main() {
 
     file << poly_hole;
 
-    file.write_file("./hole_polygon.svg");
+    file.write_file("./holed_polygon.svg");
 
     return EXIT_SUCCESS;
 }
