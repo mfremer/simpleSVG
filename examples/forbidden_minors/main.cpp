@@ -39,19 +39,22 @@ constexpr double K5_CENTER_POS_X = 0.5 * CANVAS_SIZE;
 constexpr double K5_CENTER_POS_Y = 0.5 * CANVAS_SIZE;
 constexpr double K5_RADIUS = 25.;
 
+// Generate the 2D vertices of an n-sided polygon with radius r and center (x, y)
+// Last vertex and first are the same
 std::vector<std::pair<double, double>> polygon(
-    double x, double y, double r, size_t n)
+    double x, double y, double r, size_t n, double offset = 0)
 {
     const double step = 2. * M_PI / static_cast<double>(n);
     std::vector<std::pair<double, double>> vs(n + 1);
     std::generate(vs.begin(), vs.end(),
         [&, k = 0]() mutable {
-            std::complex z = std::polar(1., (k++) * step);
+            std::complex z = std::polar(1., (k++ - offset) * step);
             return std::pair<double, double>{ x + r * z.real(), y + r * z.imag() };
         });
     return vs;
 }
 
+// Converts polygon vertices to a series of SVGPathCommands drawing it
 std::vector<SVGPathCommand> create_node(double x, double y, double r, size_t n) {
     std::vector<SVGPathCommand> node_cmds;
     auto node = polygon(x, y, r, n);
@@ -73,7 +76,8 @@ int main() {
     SVGPathStyle node_style(black, NODE_STROKE_SIZE, white, SVGFillRule::EVEN_ODD);
     SVGPathStyle arc_style(black, ARC_STROKE_SIZE, SVGLineCap::ROUND, SVGLineJoin::ROUND);
 
-    // K_{3,3}
+    /**** K_{3,3} ************************************************************/
+    // Generate node positions
     std::vector<std::pair<double, double>> node_pos_k33(6);
     for (size_t col = 0; col < 2; ++col) {
         for (size_t row = 0; row < 3; ++row) {
@@ -82,10 +86,12 @@ int main() {
                   K33_TOPLEFT_POS_Y + row * K33_SPACING_ROWS };
         }
     }
+    // Generate node paths
     SVGPath nodes_k33(node_style);
     for (const auto& [x, y] : node_pos_k33) {
         nodes_k33 << create_node(x, y, NODE_RADIUS, NODE_POINTS);
     }
+    // Trace graph arcs
     SVGPath arcs_k33(arc_style);
     for (size_t left = 0; left < 3; ++left) {
         for (size_t right = 0; right < 3; ++right) {
@@ -94,25 +100,21 @@ int main() {
             arcs_k33 << move_to(lx, ly, false) << line_to(rx, ry, false);
         }
     }
+    // Add to file
     file_k33 << arcs_k33;
     file_k33 << nodes_k33;
     file_k33.write_file("./forbidden_minors_k33.svg");
 
-    // K_5
-    std::vector<std::pair<double, double>> node_pos_k5(5);
-    std::generate(node_pos_k5.begin(), node_pos_k5.end(),
-        [k = 0]() mutable {
-            constexpr double step = (2. / 5. * M_PI);
-            std::complex z = std::polar(1., (k++ - 0.25) * step);
-            return std::pair<double, double>{ 
-                K5_CENTER_POS_X + K5_RADIUS * z.real(),
-                K5_CENTER_POS_Y + K5_RADIUS * z.imag()};
-        });
-    
+    /**** K_5 ****************************************************************/
+    // Generate node positions
+    auto node_pos_k5 = polygon(K5_CENTER_POS_X, K5_CENTER_POS_Y, K5_RADIUS, 5, 0.25);
+    node_pos_k5.pop_back(); // remove last vertex (identical to first)
+    // Generate node paths
     SVGPath nodes_k5(node_style);
     for (const auto& [x, y] : node_pos_k5) {
         nodes_k5 << create_node(x, y, NODE_RADIUS, NODE_POINTS);
     }
+    // Trace graph arcs
     SVGPath arcs_k5(arc_style);
     for (size_t i = 0; i < 5; ++i) {
         for (size_t j = i + 1; j < 5; ++j) {
@@ -121,6 +123,7 @@ int main() {
             arcs_k5 << move_to(ix, iy, false) << line_to(jx, jy, false);
         }
     }
+    // Add to file
     file_k5 << arcs_k5;
     file_k5 << nodes_k5;
     file_k5.write_file("./forbidden_minors_k5.svg");
