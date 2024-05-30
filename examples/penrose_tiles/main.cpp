@@ -163,7 +163,7 @@ int main() {
               << close_path(); // hole done
     
     // Adding elements to file
-    file.begin_group("Jite");
+    file.begin_group("Kite");
     file << kite << kite_nodes1 << kite_nodes2 << kite_mask;
     file.end_group();
     file.begin_group("Dart");
