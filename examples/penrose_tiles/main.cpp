@@ -29,8 +29,8 @@ const double SIN72 = sin(deg_to_rad(72.));
 // Parameters
 constexpr double SVG_WIDTH   = 100.;
 constexpr double SVG_HEIGHT  = 100.;
-constexpr double size   = 30.;
-constexpr double NODE_RADIUS = 0.075 * size;
+constexpr double SIZE   = 30.;
+constexpr double NODE_RADIUS = 0.075 * SIZE;
 constexpr double KITE_POS_X  = 20.; // west point of bounding box
 constexpr double KITE_POS_Y  = 50.;
 constexpr double DART_POS_X  = 60.; // west point of bounding box
@@ -38,10 +38,10 @@ constexpr double DART_POS_Y  = KITE_POS_Y;
 
 // Derived parameters
 constexpr double NODE_DIAMETER = 2. * NODE_RADIUS;
-const double OTHER_SIZE = size * SIN36 / SIN72;
-const double KITE_WIDTH = size * COS36 + OTHER_SIZE * COS72;
-const double KITE_HEIGHT = 2. * size * SIN36;
-const double DART_WIDTH = size * COS36;
+const double OTHER_SIZE = SIZE * SIN36 / SIN72;
+const double KITE_WIDTH = SIZE * COS36 + OTHER_SIZE * COS72;
+const double KITE_HEIGHT = 2. * SIZE * SIN36;
+const double DART_WIDTH = SIZE * COS36;
 const double DART_HEIGHT = KITE_HEIGHT;
 
 // Steps (w/ or w/o drawing) in a direction determined by the given angle by a given distance
@@ -85,7 +85,7 @@ int main() {
     // Kite shape
     SVGPath kite(style_tile);
     kite << move_to(KITE_POS_X, KITE_POS_Y, false)
-         << step( size,   36., true)
+         << step( SIZE,   36., true)
          << step(OTHER_SIZE,  -72., true)
          << step(OTHER_SIZE, -108., true)
          << close_path();
@@ -93,7 +93,7 @@ int main() {
     // Kite nodes: colored corner circles serving as assembly instructions
     SVGPath kite_nodes1(style_node1);
     kite_nodes1 << move_to(KITE_POS_X, KITE_POS_Y, false)
-                << step( size,   36., false)
+                << step( SIZE,   36., false)
                 << circle_in_place(NODE_RADIUS)
                 << step(OTHER_SIZE,  -72., false)
                 << step(OTHER_SIZE, -108., false)
@@ -101,7 +101,7 @@ int main() {
     SVGPath kite_nodes2(style_node2);
     kite_nodes2 << move_to(KITE_POS_X, KITE_POS_Y, false)
                 << circle_in_place(NODE_RADIUS)
-                << step( size,   36., false)
+                << step( SIZE,   36., false)
                 << step(OTHER_SIZE,  -72., false)
                 << circle_in_place(NODE_RADIUS);
 
@@ -117,7 +117,7 @@ int main() {
               << line_to(-kite_width_adapted, 0., true)
               << close_path()  // rectangle done
               << move_to(0.5 * extra_padding, 0., true)
-              << step( size,   36., true)
+              << step( SIZE,   36., true)
               << step(OTHER_SIZE,  -72., true)
               << step(OTHER_SIZE, -108., true)
               << close_path(); // hole done
@@ -128,22 +128,22 @@ int main() {
     double dart_adjustment = OTHER_SIZE * SIN18;
     dart << move_to(DART_POS_X + dart_adjustment, DART_POS_Y, false)
          << step(OTHER_SIZE,  108., true)
-         << step( size,  -36., true)
-         << step( size, -144., true)
+         << step( SIZE,  -36., true)
+         << step( SIZE, -144., true)
          << close_path();
     
     SVGPath dart_nodes1(style_node1);
     dart_nodes1 << move_to(DART_POS_X + dart_adjustment, DART_POS_Y, false)
                 << circle_in_place(NODE_RADIUS)
                 << step(OTHER_SIZE,  108., false)
-                << step( size,  -36., false)
+                << step( SIZE,  -36., false)
                 << circle_in_place(NODE_RADIUS);
     SVGPath dart_nodes2(style_node2);
     dart_nodes2 << move_to(DART_POS_X + dart_adjustment, DART_POS_Y, false)
                 << step(OTHER_SIZE,  108., false)
                 << circle_in_place(NODE_RADIUS)
-                << step( size,  -36., false)
-                << step( size, -144., false)
+                << step( SIZE,  -36., false)
+                << step( SIZE, -144., false)
                 << circle_in_place(NODE_RADIUS);
 
     // Dart mask: rectangle with a dart-shaped hole to crop corner nodes
@@ -158,8 +158,8 @@ int main() {
               << close_path()  // rectangle done
               << move_to(dart_adjustment + 0.5 * extra_padding, 0., true)
               << step(OTHER_SIZE,  108., true)
-              << step( size,  -36., true)
-              << step( size, -144., true)
+              << step( SIZE,  -36., true)
+              << step( SIZE, -144., true)
               << close_path(); // hole done
     
     // Adding elements to file
